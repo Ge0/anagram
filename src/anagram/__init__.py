@@ -1,4 +1,5 @@
 """Generate anagrams from names."""
+from flask import render_template
 
 from .__about__ import (
     __author__,
@@ -11,6 +12,7 @@ from .__about__ import (
     __version__,
 )
 
+from ._app import app
 
 __all__ = [
     "__author__",
@@ -21,10 +23,14 @@ __all__ = [
     "__title__",
     "__uri__",
     "__version__",
-    "hello",
+    "app",
 ]
 
+@app.route('/')
+def index():
+    return render_template("index/template.html")
 
-def hello():
-    """Return a welcome message."""
-    return "Hello world!"
+
+@app.route("/generate")
+def generate():
+    pass

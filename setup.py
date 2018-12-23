@@ -19,7 +19,10 @@ CLASSIFIERS = [
     "Topic :: Software Development",
     "Topic :: Utilities",
 ]
-INSTALL_REQUIRES = ["click"]
+INSTALL_REQUIRES = [
+    "click",
+    "Flask"
+]
 
 
 PROJECT_DIR = dirname(__file__)
