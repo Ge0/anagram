@@ -1,0 +1,14 @@
+[run]
+branch = True
+source = anagram
+
+[paths]
+source =
+    src/anagram
+    .tox/*/lib/python*/site-packages/anagram
+
+[report]
+;fail_under = 100
+show_missing = True
+exclude_lines =
+    if __name__ == .__main__.:
