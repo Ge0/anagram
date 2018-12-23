@@ -10,5 +10,5 @@ exports.plugins = {
 };
 
 exports.paths = {
-  "public": "../public"
+  "public": "public"
 };

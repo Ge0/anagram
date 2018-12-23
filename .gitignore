@@ -9,3 +9,4 @@
 /docs/_build/
 __pycache__/
 /public
+node_modules/

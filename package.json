@@ -1,6 +1,6 @@
 {
-  "name": "brunch-app",
-  "description": "Brunch.io application",
+  "name": "anagrams",
+  "description": "Generate anagrams from a name.",
   "private": true,
   "author": "Brunch",
   "version": "0.0.1",
@@ -8,7 +8,7 @@
   "scripts": {
     "start": "brunch watch --server",
     "build": "brunch build --production",
-    "postinstall": "brunch build"
+    "postinstall": "brunch build --production"
   },
   "dependencies": {},
   "devDependencies": {
