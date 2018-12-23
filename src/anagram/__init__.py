@@ -1,5 +1,5 @@
 """Generate anagrams from names."""
-from flask import render_template
+from flask import jsonify, render_template, request
 
 from .__about__ import (
     __author__,
@@ -13,6 +13,10 @@ from .__about__ import (
 )
 
 from ._app import app
+
+from .anagram import find_anagrams
+from .conf import settings
+from .errors import AnagramError
 
 __all__ = [
     "__author__",
@@ -31,6 +35,23 @@ def index():
     return render_template("index/template.html")
 
 
-@app.route("/generate")
+@app.route('/about')
+def about():
+    return render_template("about/template.html")
+
+
+@app.route("/generate", methods=["POST"])
 def generate():
-    pass
+    fullname = request.form.get("fullname", "")
+    if not fullname:
+        return jsonify({"error": "name is empty"})
+    else:
+        try:
+            names = [f"{first_name} {last_name}"
+                     for (first_name, last_name)
+                     in find_anagrams(fullname, settings.FIRST_NAMES,
+                                      settings.LAST_NAMES)]
+        except AnagramError as exn:
+            return jsonify({"error": str(exn)})
+        else:
+            return jsonify({"results": names})
